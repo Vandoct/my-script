@@ -34,6 +34,11 @@ if [[ -z $file ]]; then
 	exit
 fi
 
+if [[ ! -f $file ]]; then
+	echo "$file doesn't exist"
+	exit
+fi
+
 if [[ -z $port ]]; then
         echo "Port can't be empty!"
 	showHelp
