@@ -30,6 +30,17 @@ if [[ -z $db ]]; then
 	exit
 fi
 
+if [[ -z $file ]]; then
+         echo "File can't be empty!"
+         showHelp
+         exit
+fi
+
+if [[ ! -f $file ]]; then
+	echo "$file doesn't exist"
+	exit
+fi
+
 echo "Importing $file into $db ..."
 sudo -i -u postgres psql -U postgres $db < $file
 echo "Import has finished"
