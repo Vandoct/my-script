@@ -1,28 +1,33 @@
 function showHelp() {
-        echo "Available options :"
-        echo "-d | --db-name            Database name in postgresql"
-        echo "-s | --schema             Schama name in postgresql"
-        echo "-h | --help               Show help"
+	echo "Available options :"
+	echo "-d | --db-name            Database name in postgresql"
+	echo "-s | --schema             Schama name in postgresql"
+	echo "-h | --help               Show help"
 }
 
-while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
-	-d | --db-name )
-		shift; db=$1
-    		;;
-	-s | --schema )
-		shift; schema=$1
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+	case $1 in
+	-d | --db-name)
+		shift
+		db=$1
 		;;
-	-h | --help )
-                echo "Available option:"
+	-s | --schema)
+		shift
+		schema=$1
+		;;
+	-h | --help)
+		echo "Available option:"
 		showHelp
-                exit 1
+		exit 1
 		;;
-	* )
+	*)
 		echo "Invalid option $1"
 		showHelp
 		exit 1
 		;;
-esac; shift; done
+	esac
+	shift
+done
 if [[ "$1" == '--' ]]; then shift; fi
 
 if [[ -z $db ]]; then
