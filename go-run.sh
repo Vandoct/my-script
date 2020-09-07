@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function showHelp() {
 	echo "Available options :"
 	echo "-f | --file		Go file to run"
