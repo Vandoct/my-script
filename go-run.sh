@@ -60,4 +60,4 @@ fi
 TIMEZONE=$(TZ='Asia/Jakarta' date +"[%d-%m-%Y %H:%M:%S]")
 PID=$(sudo lsof -i :$port | awk '{print $2}' | tail -n 1)
 kill $PID
-go run $file | awk -v time="$TIMEZONE" '{ print time, $0; fflush(); }' >>$output &
+go run $file | awk -v time="$TIMEZONE" '{ print time, $0; fflush(); }' >> "$(dirname $0)/$output" &
