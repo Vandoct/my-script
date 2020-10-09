@@ -36,9 +36,15 @@ fi
 
 getArray() {
     array=()
+    counter=1
     while IFS= read -r line
     do
+	if [[ $counter == 50 ]]; then
+	    echo 'Maximum domain in 1 certificate is 50!'
+	    exit
+	fi
         array+=("$line")
+	((counter++))
     done < "$1"
 }
 
@@ -54,4 +60,4 @@ done
 command+=" --manual --preferred-challenges dns certonly"
 
 # Run the command
-$command
+echo $command
